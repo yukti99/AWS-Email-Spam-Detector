@@ -18,7 +18,7 @@ Resources:
           Type: S3
           Properties:
             Bucket: !Ref s3BucketEmailStorage
-            Events: s3:ObjectCreated: "*"
+            Events: s3:ObjectCreated:Put
       Environment:
         Variables:
           REGION: us-west-2

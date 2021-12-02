@@ -6,7 +6,7 @@ Resources:
   s3BucketEmailStorage:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: email-storage-bucket
+      BucketName: a3-email-storage-v4
       PublicAccessBlockConfiguration:
         BlockPublicAcls: False
         BlockPublicPolicy: False
@@ -40,6 +40,7 @@ Resources:
             Principal:
               Service:
                 - cloudformation.amazonaws.com
+                - codepipeline.amazonaws.com
             Action:
               - "sts:AssumeRole"
       Path: "/"
@@ -55,12 +56,29 @@ Resources:
   codepipelinebucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: codepipelinebucket
+      BucketName: a3codepipeline-v4
       PublicAccessBlockConfiguration:
         BlockPublicAcls: False
         BlockPublicPolicy: False
         IgnorePublicAcls: False
         RestrictPublicBuckets: False
+  
+  codepipelinebucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref codepipelinebucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - s3:*
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref codepipelinebucket
+                - /*
+            Principal: '*'
 
   a3codepipeline:
     Type: "AWS::CodePipeline::Pipeline"
@@ -81,7 +99,7 @@ Resources:
               RunOrder: 1
               Configuration:
                 Repo: "AWS-Email-Spam-Detector"
-                Branch: "main"
+                Branch: "master"
                 OAuthToken: "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"
                 Owner: "yukti99"
                 PollForSourceChanges: "true"
@@ -143,6 +161,6 @@ Resources:
         ScanEnabled: true
         TlsPolicy: Optional
         Actions:
-          - S3Action:
-            BucketName: !Ref s3BucketEmailStorage
+          - S3Action: 
+              BucketName: !Ref s3BucketEmailStorage
   
