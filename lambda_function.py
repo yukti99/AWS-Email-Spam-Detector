@@ -12,7 +12,7 @@ from utils import vectorize_sequences
 vocabulary_length = 9013
 AWS_REGION = "us-west-2"
 CHARSET = "UTF-8"
-endpoint_name = "sms-spam-classifier-mxnet-2021-11-29-02-08-53-406"
+endpoint_name = "sms-spam-classifier-mxnet-2021-12-02-05-57-55-675"
 
 s3 = boto3.client('s3')
 runtime = boto3.Session().client(service_name='sagemaker-runtime', region_name='us-west-2')
