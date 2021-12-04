@@ -6,7 +6,7 @@ Resources:
   s3BucketEmailStorage:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: a3-email-storage-v4
+      BucketName: a3-email-storage-v6
       PublicAccessBlockConfiguration:
         BlockPublicAcls: False
         BlockPublicPolicy: False
@@ -56,7 +56,7 @@ Resources:
   codepipelinebucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: a3codepipeline-v4
+      BucketName: a3codepipeline-v6
       PublicAccessBlockConfiguration:
         BlockPublicAcls: False
         BlockPublicPolicy: False
@@ -136,7 +136,7 @@ Resources:
               RunOrder: 1
               Configuration:
                 ActionMode: REPLACE_ON_FAILURE
-                Capabilities: CAPABILITY_IAM, CAPABILITY_AUTO_EXPAND
+                Capabilities: CAPABILITY_AUTO_EXPAND, CAPABILITY_IAM
                 RoleArn: !GetAtt RootRole.Arn
                 StackName: "spam-detector-stack"
                 TemplatePath: BuildArtifact::outputsamtemplate.yml
