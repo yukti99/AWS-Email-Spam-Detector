@@ -11,6 +11,7 @@ A machine learning model to predict whether a message is spam or not. Upon recei
 2. custom domain for email (many sites available to buy from)
 3. An email address for your domain. AWS MX and TXT records must be added on the domain provider site to receive an email. 
 4. Verify email on AWS account
+5. Use the cloud formation template to deploy the full stack of resources on AWS
 ```
 
 ### Step-1: Implement Amazon SageMaker 
@@ -21,9 +22,8 @@ The resulting model should perform well on emails as well, which is what the res
 Deploy the resulting model to an endpoint (E1).
 ```
 
-### Step-2:
+### Step-2: Implement an automatic spam tagging system.
 ```
-Implement an automatic spam tagging system.
 Create an S3 bucket (S1) that will store email files.
 Using SES, set up an email address, that upon receipt of an email it stores it in S3.
 Confirm that the workflow is working by sending an email to that email address and seeing if the email information ends up in S3.
@@ -32,9 +32,8 @@ to predict if the email is spam or not.
 You might want to strip out new line characters “\n” in the email body, to match the data format in the SMS dataset that the ML model was trained on.
 ```
 
-### Step-3:
+### Step-3: Create an AWS CloudFormation template for the automatic spam tagging system.
 ```
-Create an AWS CloudFormation template for the automatic spam tagging system.
 Create a CloudFormation template (T1) to represent all the infrastructure resources 
 (ex. Lambda, SES configuration, etc.) and permissions (IAM policies, roles, etc.).
 The template (T1) should take the prediction endpoint (E1) as a stack parameter.
