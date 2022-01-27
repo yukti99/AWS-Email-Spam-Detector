@@ -1,5 +1,6 @@
 # AWS-Email-Spam-Detector
 Email Spam Detection using AWS Services
+
 A machine learning model to predict whether a message is spam or not. Upon receipt of an email message, this application will automatically flag it as spam or not, based on the prediction obtained from the machine learning model. This uses the prediction obtained from the machine learning model created using Amazon SageMaker. Resources are defined through the AWS Cloudformation template which can also be used with AWS code pipeline to automate the complete resource stack formation.
 
 ### Architecture
