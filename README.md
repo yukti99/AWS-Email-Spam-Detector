@@ -39,6 +39,9 @@ Create a CloudFormation template (T1) to represent all the infrastructure resour
 The template (T1) should take the prediction endpoint (E1) as a stack parameter.
 ```
 
+### Result
+![](spamdemo.PNG)
+
 ### References
 https://github.com/aws-samples/reinvent2018-srv404-lambda-sagemaker/blob/master/training/README.md
 https://aws.amazon.com/getting-started/hands-on/build-train-deploy-machine-learning-model-sagemaker/
